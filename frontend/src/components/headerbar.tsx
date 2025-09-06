@@ -2,11 +2,11 @@ import { Swords } from "lucide-react"
 
 export default function HeaderBar() {
   return (
-    <div className=" bg-amber-900/60 p-6 shadow-2xl rounded-b-lg text-white ">
-      <span className="inline-flex flex-row items-center bg-gray-600 rounded-xl p-2 shadow-2xl">
-        <Swords />
-        <span className="font-bold text-2xl">Arcane Anvil</span>
-        <Swords />
+    <div className="custom-headerbar p-6 shadow-2xl shadow-emerald-950/80 rounded-b-4xl">
+      <span className="inline-flex flex-row items-center p-2">
+        <Swords className="text-amber-400"/>
+        <span className="font-bold text-2xl text-stone-100">Arcane Anvil</span>
+        <Swords className="text-amber-400"/>
       </span>
     </div>
   )

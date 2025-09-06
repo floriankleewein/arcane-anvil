@@ -42,6 +42,7 @@ function ItemFeature({ onAddFeature }: ItemFeatureProps) {
           id="feature-name"
           value={feature.name}
           onChange={(e) => setFeature({ ...feature, name: e.target.value })}
+          className="custom-input"
         ></Input>
       </div>
       <div className="flex-1">
@@ -52,6 +53,7 @@ function ItemFeature({ onAddFeature }: ItemFeatureProps) {
           onChange={(e) =>
             setFeature({ ...feature, description: e.target.value })
           }
+          className="custom-input"
         ></Textarea>
       </div>
       <div className="flex flex-col justify-center">
@@ -59,9 +61,10 @@ function ItemFeature({ onAddFeature }: ItemFeatureProps) {
           variant="outline"
           disabled={feature.name === "" || feature.description === ""}
           onClick={() => {
-            onAddFeature(feature);
-            setFeature({name: "", description: ""})
+            onAddFeature(feature)
+            setFeature({ name: "", description: "" })
           }}
+          className="custom-button"
         >
           <Plus />
         </Button>
@@ -76,7 +79,7 @@ function ItemFeatureList({ features, onRemoveFeature }: ItemFeatureListProps) {
       {features.map((f, index) => (
         <div
           key={index}
-          className="flex flex-row gap-4 border-2 p-2 rounded-2xl justify-between"
+          className="flex flex-row border-1 p-2 mb-4 rounded-2xl justify-between items-center custom-feature"
         >
           <div>
             <p>
@@ -84,7 +87,11 @@ function ItemFeatureList({ features, onRemoveFeature }: ItemFeatureListProps) {
               {f.description}
             </p>
           </div>
-          <Button variant="outline" onClick={() => onRemoveFeature(index)}>
+          <Button
+            variant="outline"
+            onClick={() => onRemoveFeature(index)}
+            className="custom-button"
+          >
             <X />
           </Button>
         </div>

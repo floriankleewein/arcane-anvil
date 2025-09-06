@@ -5,11 +5,13 @@ type ItemUploadProps = {
   onItemUpload: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
+// TODO: when importing item, the type and damagetype need to be set in the form aswell
+
 export default function ItemUpload({ onItemUpload }: ItemUploadProps) {
   return (
-    <div>
+    <div className="">
       <Label htmlFor="item-import" className="pb-2">Import Item</Label>
-      <Input id="item-import" type="file" onChange={onItemUpload} />
+      <Input id="item-import" type="file" className="custom-file-upload" onChange={onItemUpload} />
     </div>
   )
 }

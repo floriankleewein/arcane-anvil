@@ -39,6 +39,12 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  /*custom*/
+  --color-custom-maincolor: var(--custom-maincolor);
+  --color-custom-bg: var(--custom-bg);
+  --color-custom-text: var(--custom-text);
+  --color-custom-border: var(--custom-border);
+  --color-custom-hover: var(--custom-hover);
 }
 
 :root {
@@ -74,6 +80,16 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  /*custom*/
+  /* bg-stone-50 text-slate-900 border-emerald-700 */
+  /* --color-input-bg: theme(--color-stone-50);
+  --color-input-text: theme(--color-slate-900);
+  --color-input-border: theme(--color-emerald-700); */
+  --custom-maincolor: theme(--color-yellow-950);
+  --color-custom-bg: theme(--color-stone-100);
+  --color-custom-text: theme(--color-slate-900);
+  --color-custom-border: theme(--color-stone-500);
+  --color-custom-hover: theme(--color-stone-300);
 }
 
 .dark {
@@ -114,12 +130,39 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
+/*custom reusable utility classes*/
+.custom-input {
+  @apply bg-[var(--color-custom-bg)] text-[var(--color-custom-text)] border-[var(--color-custom-border)];
+}
+
+.custom-select {
+  @apply bg-[var(--color-custom-bg)] text-[var(--color-custom-text)] border-[var(--color-custom-border)] hover:cursor-pointer w-full hover:bg-[var(--color-custom-hover)];
+}
+
+.custom-button {
+  @apply bg-[var(--color-custom-bg)] text-[var(--color-custom-text)] border-[var(--color-custom-border)] hover:cursor-pointer hover:bg-[var(--color-custom-hover)] disabled:border-[var(--color-custom-bg)];
+}
+
+.custom-file-upload {
+  @apply bg-[var(--color-custom-bg)] text-[var(--color-custom-text)] border-[var(--color-custom-border)] hover:cursor-pointer hover:bg-[var(--color-custom-hover)];
+}
+
+.custom-headerbar {
+  --tw-shadow-color: color-mix(in oklab, var(--color-custom-maincolor) 80%, transparent);
+  @apply bg-[var(--color-custom-maincolor)] shadow-xl;
+}
+
+.custom-feature {
+  @apply bg-[var(--color-custom-bg)] text-[var(--color-custom-text)] border-[var(--color-custom-border)]
+}
+
 /*TODO*/
 /* :root, html {
-  @apply bg-red-400 dark:bg-red-800;
+  @apply bg-red-300/80 dark:bg-red-800;
 } */

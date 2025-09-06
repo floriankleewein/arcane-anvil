@@ -51,7 +51,7 @@ export default function ItemDownload({cardRef, item}: ItemDownloadProps) {
     }
   }
   return (
-    <Button variant="outline" onClick={downloadItemCard}>
+    <Button variant="outline" className="custom-button" onClick={downloadItemCard}>
       <Download />
     </Button>
   )

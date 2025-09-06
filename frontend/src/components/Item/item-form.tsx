@@ -22,14 +22,17 @@ type ItemFormProps = {
   onItemUpload: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-function onFileUpload(e: React.ChangeEvent<HTMLInputElement>, onChange: (field: string, value: string) => void){
-  const uploadedFile = e.target.files?.[0];
+function onFileUpload(
+  e: React.ChangeEvent<HTMLInputElement>,
+  onChange: (field: string, value: string) => void
+) {
+  const uploadedFile = e.target.files?.[0]
 
-  if(uploadedFile){
-    if(uploadedFile.type.startsWith("image/")){
-      const reader = new FileReader();
-      reader.onloadend = () => onChange("file", reader.result as string);
-      reader.readAsDataURL(uploadedFile);
+  if (uploadedFile) {
+    if (uploadedFile.type.startsWith("image/")) {
+      const reader = new FileReader()
+      reader.onloadend = () => onChange("file", reader.result as string)
+      reader.readAsDataURL(uploadedFile)
     }
   }
 }
@@ -39,10 +42,10 @@ export default function ItemForm({
   onChange,
   onAddFeature,
   onRemoveFeature,
-  onItemUpload
+  onItemUpload,
 }: ItemFormProps) {
   return (
-    <div className="flex flex-col w-lg rounded-md px-6 py-6 gap-6 shadow-xl">
+    <div className="flex flex-col w-lg rounded-md px-6 py-6 gap-6 bg-stone-200 border border-stone-500">
       <ItemUpload onItemUpload={onItemUpload} />
       <div>
         <Label htmlFor="name" className="pb-1">
@@ -52,6 +55,7 @@ export default function ItemForm({
           id="name"
           value={item.name}
           onChange={(e) => onChange("name", e.target.value)}
+          className="custom-input"
         ></Input>
       </div>
       <div className="flex flex-row gap-2">
@@ -65,7 +69,13 @@ export default function ItemForm({
           <Label htmlFor="file" className="pb-1">
             Image
           </Label>
-          <Input id="file" type="file" accept="image/*" onChange={(e) => onFileUpload(e, onChange)}/>
+          <Input
+            id="file"
+            type="file"
+            accept="image/*"
+            className="custom-file-upload"
+            onChange={(e) => onFileUpload(e, onChange)}
+          />
         </div>
       </div>
       <div className="flex flex-row gap-2">
@@ -77,6 +87,7 @@ export default function ItemForm({
             id="dmg"
             value={item.dmg}
             onChange={(e) => onChange("dmg", e.target.value)}
+            className="custom-input"
           ></Input>
         </div>
         <div className="flex-1">
@@ -102,6 +113,7 @@ export default function ItemForm({
           id="description"
           value={item.description}
           onChange={(e) => onChange("description", e.target.value)}
+          className="custom-input"
         />
       </div>
     </div>
@@ -115,7 +127,7 @@ type ItemTypeSelectProps = {
 function ItemTypeSelect({ onChange }: ItemTypeSelectProps) {
   return (
     <Select onValueChange={(value) => onChange("type", value)}>
-      <SelectTrigger className="w-full">
+      <SelectTrigger className="custom-select hover:bg-amber-900">
         <SelectValue placeholder="" />
       </SelectTrigger>
       <SelectContent>
@@ -150,7 +162,7 @@ type DamageTypeSelectProps = {
 function DamageTypeSelect({ onChange }: DamageTypeSelectProps) {
   return (
     <Select onValueChange={(value) => onChange("dmgtype", value)}>
-      <SelectTrigger className="w-full">
+      <SelectTrigger className="custom-select">
         <SelectValue placeholder="" />
       </SelectTrigger>
       <SelectContent>
