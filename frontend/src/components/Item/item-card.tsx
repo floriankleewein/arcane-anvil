@@ -18,7 +18,6 @@ type ItemCardFooterProps = {
 }
 
 export default function ItemCard({ item, cardRef }: ItemCardProps) {
-  console.log("RENDERING ItemCard")
 
   return (
     <div
