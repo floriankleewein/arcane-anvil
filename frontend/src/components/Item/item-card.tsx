@@ -35,7 +35,7 @@ function ItemCardHeader({ item }: ItemCardHeaderProps) {
   return (
     <div id="itemcard-header" className="flex flex-row justify-start gap-6">
       {item.file && (
-        <img src={item.file} className="w-auto max-h-32 rounded"></img>
+        <img src={item.file} className="w-auto max-h-32 rounded" crossOrigin="anonymous"></img>
       )}
       {!item.file && <div className="h-32 w-26 border-2">image</div>}
       <div className="flex flex-col gap-0">
