@@ -22,7 +22,7 @@ export default function ItemCard({ item, cardRef }: ItemCardProps) {
   return (
     <div
       ref={cardRef}
-      className="flex flex-col w-stretch sm:min-w-lg rounded-md px-6 py-6 gap-6 shadow-xl bg-white border-3 border-gray-900/80"
+      className="flex flex-col w-stretch sm:min-w-lg sm:max-w-lg rounded-md px-6 py-6 gap-6 shadow-xl bg-white border-3 border-gray-900/80 break-words"
     >
       <ItemCardHeader item={item} />
       <ItemCardContent item={item} />
@@ -38,7 +38,7 @@ function ItemCardHeader({ item }: ItemCardHeaderProps) {
         <img src={item.file} className="w-auto max-h-32 rounded" crossOrigin="anonymous"></img>
       )}
       {!item.file && <div className="h-32 w-26 border-2">image</div>}
-      <div className="flex flex-col gap-0">
+      <div className="flex flex-col gap-0 min-w-0">
         <p className="text-2xl font-bold">{item.name || "name"}</p>
         <p className="font-light">
           {(item.type !== "none" && item.type) || "type"}

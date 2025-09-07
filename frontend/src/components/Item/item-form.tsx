@@ -165,14 +165,14 @@ export default function ItemForm({
         </Label>
         <DamageTypeSelect onChange={onChange} />
       </div>
-      <div className="border-t" />
+      <div className="border-t sm:col-span-2 border-stone-500" />
       <ItemFeatureComponent
         item={item}
         onAddFeature={onAddFeature}
         onRemoveFeature={onRemoveFeature}
       ></ItemFeatureComponent>
-      <div className="border-t" />
-      <div className="md:col-span-2">
+      <div className="border-t sm:col-span-2 border-stone-500" />
+      <div className="sm:col-span-2">
         <Label htmlFor="description" className="pb-1">
           Item Description / Flavour Text
         </Label>

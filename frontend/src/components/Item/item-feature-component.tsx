@@ -33,7 +33,7 @@ function ItemFeature({ onAddFeature }: ItemFeatureProps) {
   })
 
   return (
-    <div className="flex flex-row gap-2">
+    <div className="grid grid-cols-1 gap-2">
       <div className="flex-1">
         <Label htmlFor="feature-name" className="pb-1">
           Name
@@ -45,7 +45,7 @@ function ItemFeature({ onAddFeature }: ItemFeatureProps) {
           className="custom-input"
         ></Input>
       </div>
-      <div className="flex-1">
+      <div className="1">
         <Label className="pb-1">Description</Label>
         <Textarea
           id="feature-description"
@@ -81,12 +81,10 @@ function ItemFeatureList({ features, onRemoveFeature }: ItemFeatureListProps) {
           key={index}
           className="flex flex-row border-1 p-2 mb-4 rounded-2xl justify-between items-center custom-feature"
         >
-          <div>
-            <p>
+            <p className="break-words min-w-0">
               <span className="text-l font-semibold">{f.name}: </span>
               {f.description}
             </p>
-          </div>
           <Button
             variant="outline"
             onClick={() => onRemoveFeature(index)}
@@ -106,7 +104,7 @@ export default function ItemFeatureComponent({
   onRemoveFeature,
 }: ItemFeatureComponentProps) {
   return (
-    <div className="flex flex-col gap-2 md:col-span-2">
+    <div className="flex flex-col gap-2 sm:col-span-2">
       <p className="text-md font-medium">Features</p>
       <ItemFeatureList
         features={item.features}
