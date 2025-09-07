@@ -58,16 +58,14 @@ export default function ItemPage() {
   }
 
   return (
-    <div className="flex flex-col gap-2 items-center lg:flex-row sm:items-center sm:flex-1 justify-center">
-      <div className="flex flex-col gap-2">
-        <ItemForm
-          item={item}
-          onChange={handleChange}
-          onAddFeature={addFeature}
-          onRemoveFeature={removeFeature}
-          onItemUpload={uploadItem}
-        />
-      </div>
+    <div className="flex flex-col lg:flex-row flex-1 gap-2 items-stretch sm:items-center justify-center">
+      <ItemForm
+        item={item}
+        onChange={handleChange}
+        onAddFeature={addFeature}
+        onRemoveFeature={removeFeature}
+        onItemUpload={uploadItem}
+      />
       <div className="flex flex-col gap-2">
         <ItemCard cardRef={cardRef} item={item} />
         <ItemDownload cardRef={cardRef} item={item}></ItemDownload>

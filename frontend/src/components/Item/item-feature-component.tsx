@@ -106,7 +106,7 @@ export default function ItemFeatureComponent({
   onRemoveFeature,
 }: ItemFeatureComponentProps) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 md:col-span-2">
       <p className="text-md font-medium">Features</p>
       <ItemFeatureList
         features={item.features}

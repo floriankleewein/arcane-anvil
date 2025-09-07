@@ -22,7 +22,7 @@ export default function ItemCard({ item, cardRef }: ItemCardProps) {
   return (
     <div
       ref={cardRef}
-      className="flex flex-col min-w-lg rounded-md px-6 py-6 gap-6 shadow-xl bg-white border-3 border-gray-900/80"
+      className="flex flex-col w-stretch sm:min-w-lg rounded-md px-6 py-6 gap-6 shadow-xl bg-white border-3 border-gray-900/80"
     >
       <ItemCardHeader item={item} />
       <ItemCardContent item={item} />

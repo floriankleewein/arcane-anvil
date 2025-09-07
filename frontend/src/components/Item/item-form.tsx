@@ -45,9 +45,81 @@ export default function ItemForm({
   onItemUpload,
 }: ItemFormProps) {
   return (
-    <div className="flex flex-col w-lg rounded-md px-6 py-6 gap-6 bg-stone-200 border border-stone-500">
+    // <div className="flex flex-col w-lg rounded-md px-6 py-6 gap-6 bg-stone-200 border border-stone-500">
+    //   <ItemUpload onItemUpload={onItemUpload} />
+    //   <div>
+    //     <Label htmlFor="name" className="pb-1">
+    //       Name
+    //     </Label>
+    //     <Input
+    //       id="name"
+    //       value={item.name}
+    //       onChange={(e) => onChange("name", e.target.value)}
+    //       className="custom-input"
+    //     ></Input>
+    //   </div>
+    //   <div className="flex flex-row gap-2">
+    //     <div className="flex-1">
+    //       <Label htmlFor="type" className="pb-1">
+    //         Type
+    //       </Label>
+    //       <ItemTypeSelect onChange={onChange} />
+    //     </div>
+    //     <div className="flex-1">
+    //       <Label htmlFor="file" className="pb-1">
+    //         Image
+    //       </Label>
+    //       <Input
+    //         id="file"
+    //         type="file"
+    //         accept="image/*"
+    //         className="custom-file-upload"
+    //         onChange={(e) => onFileUpload(e, onChange)}
+    //       />
+    //     </div>
+    //   </div>
+    //   <div className="flex flex-row gap-2">
+    //     <div className="flex-1">
+    //       <Label htmlFor="dmg" className="pb-1">
+    //         Damage
+    //       </Label>
+    //       <Input
+    //         id="dmg"
+    //         value={item.dmg}
+    //         onChange={(e) => onChange("dmg", e.target.value)}
+    //         className="custom-input"
+    //       ></Input>
+    //     </div>
+    //     <div className="flex-1">
+    //       <Label htmlFor="dmgtype" className="pb-1">
+    //         Damage Type
+    //       </Label>
+    //       <DamageTypeSelect onChange={onChange} />
+    //     </div>
+    //   </div>
+    //   <div className="border-t" />
+    //   <ItemFeatureComponent
+    //     item={item}
+    //     onAddFeature={onAddFeature}
+    //     onRemoveFeature={onRemoveFeature}
+    //   ></ItemFeatureComponent>
+    //   <div className="border-t" />
+    //   <div>
+    //     <Label htmlFor="description" className="pb-1">
+    //       Item Description / Flavour Text
+    //     </Label>
+    //     <Textarea
+    //       placeholder=""
+    //       id="description"
+    //       value={item.description}
+    //       onChange={(e) => onChange("description", e.target.value)}
+    //       className="custom-input"
+    //     />
+    //   </div>
+    // </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:max-w-lg rounded-md px-6 py-6 bg-stone-200 border border-stone-500">
       <ItemUpload onItemUpload={onItemUpload} />
-      <div>
+      <div className="md:col-span-2">
         <Label htmlFor="name" className="pb-1">
           Name
         </Label>
@@ -58,44 +130,40 @@ export default function ItemForm({
           className="custom-input"
         ></Input>
       </div>
-      <div className="flex flex-row gap-2">
-        <div className="flex-1">
-          <Label htmlFor="type" className="pb-1">
-            Type
-          </Label>
-          <ItemTypeSelect onChange={onChange} />
-        </div>
-        <div className="flex-1">
-          <Label htmlFor="file" className="pb-1">
-            Image
-          </Label>
-          <Input
-            id="file"
-            type="file"
-            accept="image/*"
-            className="custom-file-upload"
-            onChange={(e) => onFileUpload(e, onChange)}
-          />
-        </div>
+      <div className="">
+        <Label htmlFor="type" className="pb-1">
+          Type
+        </Label>
+        <ItemTypeSelect onChange={onChange} />
       </div>
-      <div className="flex flex-row gap-2">
-        <div className="flex-1">
-          <Label htmlFor="dmg" className="pb-1">
-            Damage
-          </Label>
-          <Input
-            id="dmg"
-            value={item.dmg}
-            onChange={(e) => onChange("dmg", e.target.value)}
-            className="custom-input"
-          ></Input>
-        </div>
-        <div className="flex-1">
-          <Label htmlFor="dmgtype" className="pb-1">
-            Damage Type
-          </Label>
-          <DamageTypeSelect onChange={onChange} />
-        </div>
+      <div className="">
+        <Label htmlFor="file" className="pb-1">
+          Image
+        </Label>
+        <Input
+          id="file"
+          type="file"
+          accept="image/*"
+          className="custom-file-upload"
+          onChange={(e) => onFileUpload(e, onChange)}
+        />
+      </div>
+      <div className="">
+        <Label htmlFor="dmg" className="pb-1">
+          Damage
+        </Label>
+        <Input
+          id="dmg"
+          value={item.dmg}
+          onChange={(e) => onChange("dmg", e.target.value)}
+          className="custom-input"
+        ></Input>
+      </div>
+      <div className="">
+        <Label htmlFor="dmgtype" className="pb-1">
+          Damage Type
+        </Label>
+        <DamageTypeSelect onChange={onChange} />
       </div>
       <div className="border-t" />
       <ItemFeatureComponent
@@ -104,7 +172,7 @@ export default function ItemForm({
         onRemoveFeature={onRemoveFeature}
       ></ItemFeatureComponent>
       <div className="border-t" />
-      <div>
+      <div className="md:col-span-2">
         <Label htmlFor="description" className="pb-1">
           Item Description / Flavour Text
         </Label>
@@ -127,7 +195,7 @@ type ItemTypeSelectProps = {
 function ItemTypeSelect({ onChange }: ItemTypeSelectProps) {
   return (
     <Select onValueChange={(value) => onChange("type", value)}>
-      <SelectTrigger className="custom-select hover:bg-amber-900">
+      <SelectTrigger className="custom-select">
         <SelectValue placeholder="" />
       </SelectTrigger>
       <SelectContent>
