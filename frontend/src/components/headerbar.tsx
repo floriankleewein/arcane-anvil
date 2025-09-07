@@ -1,31 +1,31 @@
 import { Swords } from "lucide-react"
-//import { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
-// const breakpoints: Record<string, number> = {
-//   sm: 640,
-//   md: 768,
-//   lg: 1024,
-//   xl: 1280,
-//   "2xl": 1536
-// }
+const breakpoints: Record<string, number> = {
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  "2xl": 1536
+}
 
-// function getBreakpoint(width: number){
-//   if (width >= breakpoints["2xl"]) return "2xl"
-//   if (width >= breakpoints.xl) return "xl"
-//   if (width >= breakpoints.lg) return "lg"
-//   if (width >= breakpoints.md) return "md"
-//   if (width >= breakpoints.sm) return "sm"
-//   return "base"
-// }
+function getBreakpoint(width: number){
+  if (width >= breakpoints["2xl"]) return "2xl"
+  if (width >= breakpoints.xl) return "xl"
+  if (width >= breakpoints.lg) return "lg"
+  if (width >= breakpoints.md) return "md"
+  if (width >= breakpoints.sm) return "sm"
+  return "base"
+}
 
 export default function HeaderBar() {
-  // const[size, setSize] = useState(getBreakpoint(window.innerWidth))
+  const[size, setSize] = useState(getBreakpoint(window.innerWidth))
 
-  // useEffect(()=>{
-  //   const handleResize = () => setSize(getBreakpoint(window.innerWidth));
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, [])
+  useEffect(()=>{
+    const handleResize = () => setSize(getBreakpoint(window.innerWidth));
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [])
 
   return (
     <div className="custom-headerbar flex justify-center sm:justify-start p-6 rounded-b-2xl">
@@ -36,7 +36,7 @@ export default function HeaderBar() {
       </span>
       {/* <span className="text-white">
       {size.toUpperCase()}
-      </span> */}
+      </span>  */}
     </div>
   )
 }
