@@ -195,7 +195,7 @@ type ItemTypeSelectProps = {
 function ItemTypeSelect({ onChange }: ItemTypeSelectProps) {
   return (
     <Select onValueChange={(value) => onChange("type", value)}>
-      <SelectTrigger className="custom-select">
+      <SelectTrigger className="custom-select w-full">
         <SelectValue placeholder="" />
       </SelectTrigger>
       <SelectContent>
@@ -230,7 +230,7 @@ type DamageTypeSelectProps = {
 function DamageTypeSelect({ onChange }: DamageTypeSelectProps) {
   return (
     <Select onValueChange={(value) => onChange("dmgtype", value)}>
-      <SelectTrigger className="custom-select">
+      <SelectTrigger className="custom-select w-full">
         <SelectValue placeholder="" />
       </SelectTrigger>
       <SelectContent>
