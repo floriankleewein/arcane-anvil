@@ -58,7 +58,7 @@ export default function ItemPage() {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row flex-1 gap-2 items-stretch sm:items-center justify-center">
+    <div className="flex flex-col lg:flex-row flex-1 gap-2 sm:items-center justify-center">
       <ItemForm
         item={item}
         onChange={handleChange}
