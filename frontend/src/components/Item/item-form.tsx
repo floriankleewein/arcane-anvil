@@ -117,7 +117,7 @@ export default function ItemForm({
     //     />
     //   </div>
     // </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:max-w-lg rounded-md px-6 py-6 bg-stone-200 border border-stone-500">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:w-lg rounded-md px-6 py-6 bg-stone-200 border border-stone-500">
       <ItemUpload onItemUpload={onItemUpload} />
       <div className="md:col-span-2">
         <Label htmlFor="name" className="pb-1">
