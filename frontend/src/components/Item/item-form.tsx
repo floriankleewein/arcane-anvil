@@ -117,9 +117,9 @@ export default function ItemForm({
     //     />
     //   </div>
     // </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:w-lg rounded-md px-6 py-6 bg-stone-200 border border-stone-500">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:w-lg rounded-md px-6 py-6 bg-stone-200 border border-stone-500">
       <ItemUpload onItemUpload={onItemUpload} />
-      <div className="md:col-span-2">
+      <div className="col-span-1 sm:col-span-2">
         <Label htmlFor="name" className="pb-1">
           Name
         </Label>
@@ -130,13 +130,13 @@ export default function ItemForm({
           className="custom-input"
         ></Input>
       </div>
-      <div className="">
+      <div className="col-span-1">
         <Label htmlFor="type" className="pb-1">
           Type
         </Label>
         <ItemTypeSelect onChange={onChange} />
       </div>
-      <div className="">
+      <div className="col-span-1">
         <Label htmlFor="file" className="pb-1">
           Image
         </Label>
@@ -148,7 +148,7 @@ export default function ItemForm({
           onChange={(e) => onFileUpload(e, onChange)}
         />
       </div>
-      <div className="">
+      <div className="col-span-1">
         <Label htmlFor="dmg" className="pb-1">
           Damage
         </Label>
@@ -159,7 +159,7 @@ export default function ItemForm({
           className="custom-input"
         ></Input>
       </div>
-      <div className="">
+      <div className="col-span-1">
         <Label htmlFor="dmgtype" className="pb-1">
           Damage Type
         </Label>
