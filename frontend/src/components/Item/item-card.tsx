@@ -1,4 +1,5 @@
 import type { ItemState } from "@/Pages/ItemPage"
+import { toast } from "sonner"
 
 type ItemCardProps = {
   item: ItemState
@@ -18,7 +19,6 @@ type ItemCardFooterProps = {
 }
 
 export default function ItemCard({ item, cardRef }: ItemCardProps) {
-
   return (
     <div
       ref={cardRef}
@@ -35,7 +35,12 @@ function ItemCardHeader({ item }: ItemCardHeaderProps) {
   return (
     <div id="itemcard-header" className="flex flex-row justify-start gap-6">
       {item.file && (
-        <img src={item.file} className="w-auto max-h-32 rounded" crossOrigin="anonymous"></img>
+        <img
+          src={item.file}
+          className="w-auto max-h-32 rounded"
+          crossOrigin="anonymous"
+          onLoad={() => toast("done loading")}
+        ></img>
       )}
       {!item.file && <div className="h-32 w-26 border-2">image</div>}
       <div className="flex flex-col gap-0 min-w-0">
