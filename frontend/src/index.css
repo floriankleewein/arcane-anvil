@@ -85,7 +85,7 @@
   /* --color-input-bg: theme(--color-stone-50);
   --color-input-text: theme(--color-slate-900);
   --color-input-border: theme(--color-emerald-700); */
-  --custom-maincolor: theme(--color-yellow-950);
+  --custom-maincolor: theme(--color-sky-950);
   --color-custom-bg: theme(--color-stone-100);
   --color-custom-text: theme(--color-slate-900);
   --color-custom-border: theme(--color-stone-500);
@@ -142,7 +142,7 @@
 }
 
 .custom-select {
-  @apply bg-[var(--color-custom-bg)] text-[var(--color-custom-text)] border-[var(--color-custom-border)] hover:cursor-pointer w-full hover:bg-[var(--color-custom-hover)];
+  @apply bg-[var(--color-custom-bg)] text-[var(--color-custom-text)] border-[var(--color-custom-border)] hover:cursor-pointer hover:bg-[var(--color-custom-hover)];
 }
 
 .custom-button {
