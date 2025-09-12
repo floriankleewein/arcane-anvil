@@ -34,9 +34,9 @@ export default function HeaderBar() {
         <span className="font-bold text-2xl text-stone-100">Arcane Anvil</span>
         <Swords className="text-amber-400"/>
       </span>
-      {/* <span className="text-white">
+      <span className="text-white hidden">
       {size.toUpperCase()}
-      </span>  */}
+      </span> 
     </div>
   )
 }
