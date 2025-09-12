@@ -158,6 +158,10 @@
   @apply bg-[var(--color-custom-maincolor)] shadow-xl;
 }
 
+.custom-footerbar {
+  @apply bg-[var(--color-custom-maincolor)];
+}
+
 .custom-feature {
   @apply bg-[var(--color-custom-bg)] text-[var(--color-custom-text)] border-[var(--color-custom-border)]
 }
