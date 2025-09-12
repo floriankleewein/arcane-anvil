@@ -63,7 +63,7 @@ function ItemCardContent({ item }: ItemCardContentProps) {
         item.features.map((f, index) => (
           <div key={index}>
             <p>
-              <span className="text-xl font-semibold">{f.name}: </span>
+              <span className="text-xl font-semibold">{f.name} - </span>
               {f.description}
             </p>
           </div>
