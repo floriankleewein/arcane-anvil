@@ -18,6 +18,7 @@ type ItemFormProps = {
   item: ItemState
   onChange: (field: string, value: string) => void
   onAddFeature: (feature: ItemFeature) => void
+  onEditFeature: (index: number, newFeature: ItemFeature) => void
   onRemoveFeature: (index: number) => void
   onItemUpload: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
@@ -41,82 +42,11 @@ export default function ItemForm({
   item,
   onChange,
   onAddFeature,
+  onEditFeature,
   onRemoveFeature,
   onItemUpload,
 }: ItemFormProps) {
   return (
-    // <div className="flex flex-col w-lg rounded-md px-6 py-6 gap-6 bg-stone-200 border border-stone-500">
-    //   <ItemUpload onItemUpload={onItemUpload} />
-    //   <div>
-    //     <Label htmlFor="name" className="pb-1">
-    //       Name
-    //     </Label>
-    //     <Input
-    //       id="name"
-    //       value={item.name}
-    //       onChange={(e) => onChange("name", e.target.value)}
-    //       className="custom-input"
-    //     ></Input>
-    //   </div>
-    //   <div className="flex flex-row gap-2">
-    //     <div className="flex-1">
-    //       <Label htmlFor="type" className="pb-1">
-    //         Type
-    //       </Label>
-    //       <ItemTypeSelect onChange={onChange} />
-    //     </div>
-    //     <div className="flex-1">
-    //       <Label htmlFor="file" className="pb-1">
-    //         Image
-    //       </Label>
-    //       <Input
-    //         id="file"
-    //         type="file"
-    //         accept="image/*"
-    //         className="custom-file-upload"
-    //         onChange={(e) => onFileUpload(e, onChange)}
-    //       />
-    //     </div>
-    //   </div>
-    //   <div className="flex flex-row gap-2">
-    //     <div className="flex-1">
-    //       <Label htmlFor="dmg" className="pb-1">
-    //         Damage
-    //       </Label>
-    //       <Input
-    //         id="dmg"
-    //         value={item.dmg}
-    //         onChange={(e) => onChange("dmg", e.target.value)}
-    //         className="custom-input"
-    //       ></Input>
-    //     </div>
-    //     <div className="flex-1">
-    //       <Label htmlFor="dmgtype" className="pb-1">
-    //         Damage Type
-    //       </Label>
-    //       <DamageTypeSelect onChange={onChange} />
-    //     </div>
-    //   </div>
-    //   <div className="border-t" />
-    //   <ItemFeatureComponent
-    //     item={item}
-    //     onAddFeature={onAddFeature}
-    //     onRemoveFeature={onRemoveFeature}
-    //   ></ItemFeatureComponent>
-    //   <div className="border-t" />
-    //   <div>
-    //     <Label htmlFor="description" className="pb-1">
-    //       Item Description / Flavour Text
-    //     </Label>
-    //     <Textarea
-    //       placeholder=""
-    //       id="description"
-    //       value={item.description}
-    //       onChange={(e) => onChange("description", e.target.value)}
-    //       className="custom-input"
-    //     />
-    //   </div>
-    // </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:w-lg rounded-md px-6 py-6 bg-stone-200 border border-stone-500">
       <ItemUpload onItemUpload={onItemUpload} />
       <div className="col-span-1 sm:col-span-2">
@@ -169,6 +99,7 @@ export default function ItemForm({
       <ItemFeatureComponent
         item={item}
         onAddFeature={onAddFeature}
+        onEditFeature={onEditFeature}
         onRemoveFeature={onRemoveFeature}
       ></ItemFeatureComponent>
       <div className="border-t sm:col-span-2 border-stone-500" />

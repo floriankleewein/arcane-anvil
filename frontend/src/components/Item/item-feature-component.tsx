@@ -2,19 +2,28 @@ import type { ItemState } from "@/Pages/ItemPage"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { Textarea } from "../ui/textarea"
-import { Plus, X } from "lucide-react"
+import { Plus, X, Edit, Trash2, Save } from "lucide-react"
 import { Button } from "../ui/button"
 import { useState } from "react"
 
 type ItemFeatureComponentProps = {
   item: ItemState
   onAddFeature: (feature: ItemFeature) => void
+  onEditFeature: (index: number, newFeature: ItemFeature) => void
   onRemoveFeature: (index: number) => void
 }
 
-type ItemFeatureListProps = {
+type FeatureListProps = {
   features: ItemFeature[]
+  onEditFeature: (index: number, newFeature: ItemFeature) => void
   onRemoveFeature: (index: number) => void
+}
+
+type FeatureListItemProps = {
+  feature: ItemFeature
+  onEditFeature: (index: number, newFeature: ItemFeature) => void
+  onRemoveFeature: (index: number) => void
+  index: number
 }
 
 type ItemFeatureProps = {
@@ -73,26 +82,96 @@ function ItemFeature({ onAddFeature }: ItemFeatureProps) {
   )
 }
 
-function ItemFeatureList({ features, onRemoveFeature }: ItemFeatureListProps) {
+function FeatureListItem({
+  feature,
+  onEditFeature,
+  onRemoveFeature,
+  index,
+}: FeatureListItemProps) {
+  const [isEditing, setIsEditing] = useState(false)
+  const [draft, setDraft] = useState<ItemFeature>(feature)
+
+  return (
+    <div className="flex flex-col md:flex-row md:gap-2">
+      <div
+        key={index}
+        className="border-1 p-2 mb-4 rounded-2xl items-center custom-feature gap-2 flex-1"
+      >
+        <div className="flex flex-col gap-2">
+          {isEditing ? (
+            <>
+              <Input
+                id="feature-name"
+                value={draft.name}
+                onChange={(e) => setDraft((prev) => ({...prev, name: e.target.value}))}
+                className="custom-input text-l font-semibold"
+              ></Input>
+              <Textarea
+                id="feature-description"
+                value={draft.description}
+                onChange={(e) => setDraft((prev) => ({...prev, description: e.target.value}))}
+                className="custom-input"
+              ></Textarea>
+            </>
+          ) : (
+            <>
+              <p className="text-l font-semibold">{feature.name} </p>
+              <p className="break-words min-w-0">{feature.description}</p>
+            </>
+          )}
+        </div>
+      </div>
+      <div className="flex flex-row md:flex-col gap-2">
+        {isEditing ? (
+          <>
+            <Button
+              variant="outline"
+              onClick={() => {onEditFeature(index, draft); setIsEditing(false)}}
+              className="custom-button flex-1 md:flex-0"
+            >
+              <Save />
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => setIsEditing(false)}
+              className="custom-button flex-1 md:flex-0"
+            >
+              <X />
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button
+              variant="outline"
+              onClick={() => setIsEditing(true)}
+              className="custom-button flex-1 md:flex-0"
+            >
+              <Edit />
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => onRemoveFeature(index)}
+              className="custom-button flex-1 md:flex-0"
+            >
+              <Trash2 />
+            </Button>
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function FeatureList({ features, onEditFeature, onRemoveFeature }: FeatureListProps) {
   return (
     <div>
       {features.map((f, index) => (
-        <div
-          key={index}
-          className="flex flex-row border-1 p-2 mb-4 rounded-2xl justify-between items-center custom-feature"
-        >
-            <p className="break-words min-w-0">
-              <span className="text-l font-semibold">{f.name}: </span>
-              {f.description}
-            </p>
-          <Button
-            variant="outline"
-            onClick={() => onRemoveFeature(index)}
-            className="custom-button"
-          >
-            <X />
-          </Button>
-        </div>
+        <FeatureListItem
+          feature={f}
+          index={index}
+          onEditFeature={onEditFeature}
+          onRemoveFeature={onRemoveFeature}
+        />
       ))}
     </div>
   )
@@ -101,15 +180,17 @@ function ItemFeatureList({ features, onRemoveFeature }: ItemFeatureListProps) {
 export default function ItemFeatureComponent({
   item,
   onAddFeature,
+  onEditFeature,
   onRemoveFeature,
 }: ItemFeatureComponentProps) {
   return (
     <div className="flex flex-col gap-2 sm:col-span-2">
       <p className="text-md font-medium">Features</p>
-      <ItemFeatureList
+      <FeatureList
         features={item.features}
+        onEditFeature={onEditFeature}
         onRemoveFeature={onRemoveFeature}
-      ></ItemFeatureList>
+      ></FeatureList>
       <ItemFeature onAddFeature={onAddFeature}></ItemFeature>
     </div>
   )

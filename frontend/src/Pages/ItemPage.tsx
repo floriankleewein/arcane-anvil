@@ -40,6 +40,13 @@ export default function ItemPage() {
     }))
   }
 
+  function editFeature(index: number, newFeature: ItemFeature) {
+    setItem((prev) => ({
+      ...prev,
+      features: prev.features.map((f, i) => (i === index ? newFeature : f)),
+    }))
+  }
+
   function removeFeature(index: number) {
     setItem((prev) => ({
       ...prev,
@@ -63,6 +70,7 @@ export default function ItemPage() {
         item={item}
         onChange={handleChange}
         onAddFeature={addFeature}
+        onEditFeature={editFeature}
         onRemoveFeature={removeFeature}
         onItemUpload={uploadItem}
       />
