@@ -166,6 +166,10 @@
   @apply bg-[var(--color-custom-bg)] text-[var(--color-custom-text)] border-[var(--color-custom-border)]
 }
 
+.custom-scroll-area {
+  @apply border-1 border-[var(--color-custom-border)]
+}
+
 /*TODO*/
 /* :root, html {
   @apply bg-red-300/80 dark:bg-red-800;
