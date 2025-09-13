@@ -1,5 +1,5 @@
 import type { ItemState } from "@/Pages/ItemPage"
-import { CONDITIONS } from "../constants/dndConstants"
+import { ITEMTYPES, DAMAGETYPES, CONDITIONS } from "../constants/dndConstants"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import {
@@ -119,7 +119,10 @@ export default function ItemForm({
         />
       </div>
       <div className="sm:col-span-2">
-        <ConditionToggleGroup conditionNames={item.conditionNames} onChange={onChange}></ConditionToggleGroup>
+        <ConditionToggleGroup
+          conditionNames={item.conditionNames}
+          onChange={onChange}
+        ></ConditionToggleGroup>
       </div>
     </div>
   )
@@ -137,25 +140,11 @@ function ItemTypeSelect({ type, onChange }: ItemTypeSelectProps) {
         <SelectValue placeholder="" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="simple weapon">Simple Weapon</SelectItem>
-        <SelectItem value="martial weapon">Martial Weapon</SelectItem>
-        <SelectItem value="light armor">Light Armor</SelectItem>
-        <SelectItem value="medium armor">Medium Armor</SelectItem>
-        <SelectItem value="heavy armor">Heavy Armor</SelectItem>
-        <SelectItem value="shield">Shield</SelectItem>
-        <SelectItem value="potion">Potion</SelectItem>
-        <SelectItem value="ring">Ring</SelectItem>
-        <SelectItem value="wondrous item">Wondrous Item</SelectItem>
-        <SelectItem value="staff">Staff</SelectItem>
-        <SelectItem value="wand">Wand</SelectItem>
-        <SelectItem value="scroll">Scroll</SelectItem>
-        <SelectItem value="ammunition">Ammunition</SelectItem>
-        <SelectItem value="adventuring gear">Adventuring Gear</SelectItem>
-        <SelectItem value="tool">Tool</SelectItem>
-        <SelectItem value="instrument">Instrument</SelectItem>
-        <SelectItem value="consumable">Consumable</SelectItem>
-        <SelectItem value="gem">Gem</SelectItem>
-        <SelectItem value="treasure">Treasure</SelectItem>
+        {ITEMTYPES.map((i, index) => (
+          <SelectItem key={index} value={i.value}>
+            {i.description}
+          </SelectItem>
+        ))}
       </SelectContent>
     </Select>
   )
@@ -176,20 +165,11 @@ function DamageTypeSelect({ dmgtype, onChange }: DamageTypeSelectProps) {
         <SelectValue placeholder="" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="none">None</SelectItem>
-        <SelectItem value="bludgeoning">Bludgeoning</SelectItem>
-        <SelectItem value="piercing">Piercing</SelectItem>
-        <SelectItem value="slashing">Slashing</SelectItem>
-        <SelectItem value="acid">Acid</SelectItem>
-        <SelectItem value="cold">Cold</SelectItem>
-        <SelectItem value="fire">Fire</SelectItem>
-        <SelectItem value="force">Force</SelectItem>
-        <SelectItem value="lightning">Lightning</SelectItem>
-        <SelectItem value="necrotic">Necrotic</SelectItem>
-        <SelectItem value="poison">Poison</SelectItem>
-        <SelectItem value="psychic">Psychic</SelectItem>
-        <SelectItem value="radiant">Radiant</SelectItem>
-        <SelectItem value="thunder">Thunder</SelectItem>
+        {DAMAGETYPES.map((d, index) => (
+          <SelectItem key={index} value={d.value}>
+            {d.description}
+          </SelectItem>
+        ))}
       </SelectContent>
     </Select>
   )
@@ -200,7 +180,10 @@ type ConditionToggleGroupProps = {
   onChange: (field: string, values: string[]) => void
 }
 
-function ConditionToggleGroup({conditionNames, onChange }: ConditionToggleGroupProps) {
+function ConditionToggleGroup({
+  conditionNames,
+  onChange,
+}: ConditionToggleGroupProps) {
   return (
     <>
       <Label htmlFor="conditions" className="pb-1">
