@@ -1,5 +1,5 @@
 import type { ItemState } from "@/Pages/ItemPage"
-import { toast } from "sonner"
+import { CONDITIONS } from "../constants/dndConstants"
 
 type ItemCardProps = {
   item: ItemState
@@ -22,7 +22,7 @@ export default function ItemCard({ item, cardRef }: ItemCardProps) {
   return (
     <div
       ref={cardRef}
-      className="flex flex-col w-stretch sm:min-w-lg sm:max-w-lg rounded-md px-6 py-6 gap-6 shadow-xl bg-white border-3 border-gray-900/80 break-words"
+      className="flex flex-col w-stretch sm:min-w-xl sm:max-w-xl rounded-md px-6 py-6 gap-6 shadow-xl bg-white border-3 border-gray-900/80 break-words"
     >
       <ItemCardHeader item={item} />
       <ItemCardContent item={item} />
@@ -39,7 +39,6 @@ function ItemCardHeader({ item }: ItemCardHeaderProps) {
           src={item.file}
           className="w-auto max-h-32 rounded"
           crossOrigin="anonymous"
-          onLoad={() => toast("done loading")}
         ></img>
       )}
       {!item.file && <div className="h-32 w-26 border-2">image</div>}
@@ -77,10 +76,20 @@ function ItemCardContent({ item }: ItemCardContentProps) {
 
 function ItemCardFooter({ item }: ItemCardFooterProps) {
   return (
-    <div id="itemcard-footer">
+    <div id="itemcard-footer" className="flex flex-col gap-2">
       <p className="italic">
         {item.description || "item description / flavour text"}
       </p>
+      {item.conditionNames.length > 0 && <div className="border-t-1"></div>}
+      {item.conditionNames.map((cn, i) => {
+        const condition = CONDITIONS.find((c) => c.name === cn)!
+        return (
+          <div key={i}>
+            <span className="font-semibold text-sm">{condition.name} </span>
+            <span className="font-light text-xs leading-none">{condition.description}</span>
+          </div>
+        )
+      })}
     </div>
   )
 }
