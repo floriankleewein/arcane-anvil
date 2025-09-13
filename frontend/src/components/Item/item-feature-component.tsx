@@ -21,10 +21,10 @@ type FeatureListProps = {
 }
 
 type FeatureListItemProps = {
+  index: number
   feature: ItemFeature
   onEditFeature: (index: number, newFeature: ItemFeature) => void
   onRemoveFeature: (index: number) => void
-  index: number
 }
 
 type ItemFeatureProps = {
@@ -84,10 +84,11 @@ function ItemFeature({ onAddFeature }: ItemFeatureProps) {
 }
 
 function FeatureListItem({
+  index,
   feature,
   onEditFeature,
   onRemoveFeature,
-  index,
+  
 }: FeatureListItemProps) {
   const [isEditing, setIsEditing] = useState(false)
   const [draft, setDraft] = useState<ItemFeature>(feature)
@@ -180,6 +181,7 @@ function FeatureList({
       <div className="p-4">
         {features.map((f, index) => (
           <FeatureListItem
+            key={index}
             feature={f}
             index={index}
             onEditFeature={onEditFeature}
