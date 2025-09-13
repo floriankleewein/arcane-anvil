@@ -14,6 +14,7 @@ type ItemDownloadProps = {
 }
 
 export default function ItemDownload({cardRef, item}: ItemDownloadProps) {
+
   async function downloadItemCard() {
     if (!cardRef.current) return
 
@@ -50,6 +51,7 @@ export default function ItemDownload({cardRef, item}: ItemDownloadProps) {
       console.error("Error generating PNG with metadata: ", err)
     }
   }
+
   return (
     <Button variant="outline" className="custom-button" onClick={downloadItemCard}>
       <Download />
