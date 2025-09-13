@@ -5,6 +5,7 @@ import { Textarea } from "../ui/textarea"
 import { Plus, X, Edit, Trash2, Save } from "lucide-react"
 import { Button } from "../ui/button"
 import { useState } from "react"
+import { ScrollArea } from "../ui/scroll-area"
 
 type ItemFeatureComponentProps = {
   item: ItemState
@@ -92,10 +93,10 @@ function FeatureListItem({
   const [draft, setDraft] = useState<ItemFeature>(feature)
 
   return (
-    <div className="flex flex-col md:flex-row md:gap-2">
+    <div className="flex flex-col md:flex-row gap-1 mb-4">
       <div
         key={index}
-        className="border-1 p-2 mb-4 rounded-2xl items-center custom-feature gap-2 flex-1"
+        className="border-1 p-2 rounded-2xl items-center custom-feature gap-2 flex-1"
       >
         <div className="flex flex-col gap-2">
           {isEditing ? (
@@ -103,13 +104,17 @@ function FeatureListItem({
               <Input
                 id="feature-name"
                 value={draft.name}
-                onChange={(e) => setDraft((prev) => ({...prev, name: e.target.value}))}
+                onChange={(e) =>
+                  setDraft((prev) => ({ ...prev, name: e.target.value }))
+                }
                 className="custom-input text-l font-semibold"
               ></Input>
               <Textarea
                 id="feature-description"
                 value={draft.description}
-                onChange={(e) => setDraft((prev) => ({...prev, description: e.target.value}))}
+                onChange={(e) =>
+                  setDraft((prev) => ({ ...prev, description: e.target.value }))
+                }
                 className="custom-input"
               ></Textarea>
             </>
@@ -126,7 +131,10 @@ function FeatureListItem({
           <>
             <Button
               variant="outline"
-              onClick={() => {onEditFeature(index, draft); setIsEditing(false)}}
+              onClick={() => {
+                onEditFeature(index, draft)
+                setIsEditing(false)
+              }}
               className="custom-button flex-1 md:flex-0"
             >
               <Save />
@@ -162,18 +170,24 @@ function FeatureListItem({
   )
 }
 
-function FeatureList({ features, onEditFeature, onRemoveFeature }: FeatureListProps) {
+function FeatureList({
+  features,
+  onEditFeature,
+  onRemoveFeature,
+}: FeatureListProps) {
   return (
-    <div>
-      {features.map((f, index) => (
-        <FeatureListItem
-          feature={f}
-          index={index}
-          onEditFeature={onEditFeature}
-          onRemoveFeature={onRemoveFeature}
-        />
-      ))}
-    </div>
+    features.length > 0 && <ScrollArea className="max-h-auto md:max-h-64 rounded-md custom-scroll-area">
+      <div className="p-4">
+        {features.map((f, index) => (
+          <FeatureListItem
+            feature={f}
+            index={index}
+            onEditFeature={onEditFeature}
+            onRemoveFeature={onRemoveFeature}
+          />
+        ))}
+      </div>
+    </ScrollArea>
   )
 }
 
