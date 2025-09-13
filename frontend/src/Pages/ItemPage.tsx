@@ -14,6 +14,7 @@ export type ItemState = {
   dmgtype: string
   features: ItemFeature[]
   description: string
+  conditionNames: string[] 
 }
 
 export default function ItemPage() {
@@ -25,11 +26,12 @@ export default function ItemPage() {
     dmgtype: "",
     features: [],
     description: "",
+    conditionNames: []
   })
 
   const cardRef = useRef<HTMLDivElement>(null)
 
-  function handleChange(field: string, value: string) {
+  function handleChange(field: string, value: string | string[]) {
     setItem((prev) => ({ ...prev, [field]: value }))
   }
 
