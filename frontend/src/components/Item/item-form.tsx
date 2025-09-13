@@ -1,4 +1,5 @@
 import type { ItemState } from "@/Pages/ItemPage"
+import { CONDITIONS } from "../constants/dndConstants"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import {
@@ -13,10 +14,12 @@ import ItemFeatureComponent, {
   type ItemFeature,
 } from "./item-feature-component"
 import ItemUpload from "./item-upload"
+import { ToggleGroup } from "@radix-ui/react-toggle-group"
+import { ToggleGroupItem } from "../ui/toggle-group"
 
 type ItemFormProps = {
   item: ItemState
-  onChange: (field: string, value: string) => void
+  onChange: (field: string, value: string | string[]) => void
   onAddFeature: (feature: ItemFeature) => void
   onEditFeature: (index: number, newFeature: ItemFeature) => void
   onRemoveFeature: (index: number) => void
@@ -46,7 +49,6 @@ export default function ItemForm({
   onRemoveFeature,
   onItemUpload,
 }: ItemFormProps) {
-
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:w-lg rounded-md px-6 py-6 bg-stone-200 border border-stone-500">
       <ItemUpload onItemUpload={onItemUpload} />
@@ -116,6 +118,9 @@ export default function ItemForm({
           className="custom-input"
         />
       </div>
+      <div className="sm:col-span-2">
+        <ConditionToggleGroup conditionNames={item.conditionNames} onChange={onChange}></ConditionToggleGroup>
+      </div>
     </div>
   )
 }
@@ -163,7 +168,10 @@ type DamageTypeSelectProps = {
 
 function DamageTypeSelect({ dmgtype, onChange }: DamageTypeSelectProps) {
   return (
-    <Select value={dmgtype} onValueChange={(value) => onChange("dmgtype", value)}>
+    <Select
+      value={dmgtype}
+      onValueChange={(value) => onChange("dmgtype", value)}
+    >
       <SelectTrigger className="custom-select w-full">
         <SelectValue placeholder="" />
       </SelectTrigger>
@@ -184,5 +192,39 @@ function DamageTypeSelect({ dmgtype, onChange }: DamageTypeSelectProps) {
         <SelectItem value="thunder">Thunder</SelectItem>
       </SelectContent>
     </Select>
+  )
+}
+
+type ConditionToggleGroupProps = {
+  conditionNames: string[]
+  onChange: (field: string, values: string[]) => void
+}
+
+function ConditionToggleGroup({conditionNames, onChange }: ConditionToggleGroupProps) {
+  return (
+    <>
+      <Label htmlFor="conditions" className="pb-1">
+        Condition Info
+      </Label>
+      <ToggleGroup
+        type="multiple"
+        id="conditions"
+        value={conditionNames}
+        className="custom-toggle-group p-2"
+        onValueChange={(values) => onChange("conditionNames", values)}
+      >
+        {CONDITIONS.map((c, i) => (
+          <ToggleGroupItem
+            key={i}
+            value={c.name}
+            className="custom-toggle-group-item"
+          >
+            <p>
+              <span className="font-semibold text-sm">{c.name}</span>
+            </p>
+          </ToggleGroupItem>
+        ))}
+      </ToggleGroup>
+    </>
   )
 }
