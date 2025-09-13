@@ -1,5 +1,5 @@
 import type { ItemState } from "@/Pages/ItemPage"
-import { CONDITIONS } from "../constants/dndConstants"
+import { CONDITIONS } from "../../constants/dndConstants"
 
 type ItemCardProps = {
   item: ItemState

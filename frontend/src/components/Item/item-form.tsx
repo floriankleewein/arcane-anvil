@@ -1,5 +1,5 @@
 import type { ItemState } from "@/Pages/ItemPage"
-import { ITEMTYPES, DAMAGETYPES, CONDITIONS } from "../constants/dndConstants"
+import { ITEMTYPES, DAMAGETYPES, CONDITIONS } from "../../constants/dndConstants"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import {
