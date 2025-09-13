@@ -170,6 +170,24 @@
   @apply border-1 border-[var(--color-custom-border)]
 }
 
+.custom-toggle-group {
+  @apply bg-[var(--color-custom-bg)] border-1 border-[var(--color-custom-border)] rounded-md
+}
+
+.custom-toggle-group-item {
+  @apply bg-[var(--color-custom-bg)] border-1 border-[var(--color-custom-border)] rounded-sm;
+
+  &[data-state="off"] {
+    @apply bg-[var(--color-custom-bg)]
+  }
+
+  &[data-state="on"] {
+    @apply bg-[var(--color-custom-border)] text-[var(--color-custom-bg)]
+  }
+
+
+}
+
 /*TODO*/
 /* :root, html {
   @apply bg-red-300/80 dark:bg-red-800;
