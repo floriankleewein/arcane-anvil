@@ -46,6 +46,7 @@ export default function ItemForm({
   onRemoveFeature,
   onItemUpload,
 }: ItemFormProps) {
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:w-lg rounded-md px-6 py-6 bg-stone-200 border border-stone-500">
       <ItemUpload onItemUpload={onItemUpload} />
@@ -64,7 +65,7 @@ export default function ItemForm({
         <Label htmlFor="type" className="pb-1">
           Type
         </Label>
-        <ItemTypeSelect onChange={onChange} />
+        <ItemTypeSelect type={item.type} onChange={onChange} />
       </div>
       <div className="col-span-1">
         <Label htmlFor="file" className="pb-1">
@@ -93,7 +94,7 @@ export default function ItemForm({
         <Label htmlFor="dmgtype" className="pb-1">
           Damage Type
         </Label>
-        <DamageTypeSelect onChange={onChange} />
+        <DamageTypeSelect dmgtype={item.dmgtype} onChange={onChange} />
       </div>
       <div className="border-t sm:col-span-2 border-stone-500" />
       <ItemFeatureComponent
@@ -120,12 +121,13 @@ export default function ItemForm({
 }
 
 type ItemTypeSelectProps = {
+  type: string
   onChange: (field: string, value: string) => void
 }
 
-function ItemTypeSelect({ onChange }: ItemTypeSelectProps) {
+function ItemTypeSelect({ type, onChange }: ItemTypeSelectProps) {
   return (
-    <Select onValueChange={(value) => onChange("type", value)}>
+    <Select value={type} onValueChange={(value) => onChange("type", value)}>
       <SelectTrigger className="custom-select w-full">
         <SelectValue placeholder="" />
       </SelectTrigger>
@@ -155,12 +157,13 @@ function ItemTypeSelect({ onChange }: ItemTypeSelectProps) {
 }
 
 type DamageTypeSelectProps = {
+  dmgtype: string
   onChange: (field: string, value: string) => void
 }
 
-function DamageTypeSelect({ onChange }: DamageTypeSelectProps) {
+function DamageTypeSelect({ dmgtype, onChange }: DamageTypeSelectProps) {
   return (
-    <Select onValueChange={(value) => onChange("dmgtype", value)}>
+    <Select value={dmgtype} onValueChange={(value) => onChange("dmgtype", value)}>
       <SelectTrigger className="custom-select w-full">
         <SelectValue placeholder="" />
       </SelectTrigger>
