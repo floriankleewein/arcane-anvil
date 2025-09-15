@@ -107,6 +107,12 @@ export default function ItemForm({
       ></ItemFeatureComponent>
       <div className="border-t sm:col-span-2 border-stone-500" />
       <div className="sm:col-span-2">
+        <ConditionToggleGroup
+          conditionNames={item.conditionNames}
+          onChange={onChange}
+        ></ConditionToggleGroup>
+      </div>
+      <div className="sm:col-span-2">
         <Label htmlFor="description" className="pb-1">
           Item Description / Flavour Text
         </Label>
@@ -117,12 +123,6 @@ export default function ItemForm({
           onChange={(e) => onChange("description", e.target.value)}
           className="custom-input md:max-h-18"
         />
-      </div>
-      <div className="sm:col-span-2">
-        <ConditionToggleGroup
-          conditionNames={item.conditionNames}
-          onChange={onChange}
-        ></ConditionToggleGroup>
       </div>
     </div>
   )

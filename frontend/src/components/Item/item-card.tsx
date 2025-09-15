@@ -77,9 +77,7 @@ function ItemCardContent({ item }: ItemCardContentProps) {
 function ItemCardFooter({ item }: ItemCardFooterProps) {
   return (
     <div id="itemcard-footer" className="flex flex-col gap-2">
-      <p className="italic">
-        {item.description || "item description / flavour text"}
-      </p>
+      
       {item.conditionNames.length > 0 && <div className="border-t-1"></div>}
       {item.conditionNames.map((cn, i) => {
         const condition = CONDITIONS.find((c) => c.name === cn)!
@@ -90,6 +88,9 @@ function ItemCardFooter({ item }: ItemCardFooterProps) {
           </div>
         )
       })}
+      <p className="italic">
+        {item.description || "item description / flavour text"}
+      </p>
     </div>
   )
 }
