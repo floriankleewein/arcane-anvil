@@ -122,7 +122,7 @@ function FeatureListItem({
           ) : (
             <>
               <p className="text-l font-semibold">{feature.name} </p>
-              <p className="break-words min-w-0 md:max-h-12 md:overflow-y-auto">{feature.description}</p>
+              <p className="whitespace-pre-wrap min-w-0 md:max-h-12 md:overflow-y-auto">{feature.description}</p>
             </>
           )}
         </div>

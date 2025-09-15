@@ -63,7 +63,7 @@ function ItemCardContent({ item }: ItemCardContentProps) {
           <div key={index}>
             <p>
               <span className="text-xl font-semibold">{f.name} - </span>
-              {f.description}
+              <span className="whitespace-pre-wrap">{f.description}</span>
             </p>
           </div>
         ))
@@ -88,7 +88,7 @@ function ItemCardFooter({ item }: ItemCardFooterProps) {
           </div>
         )
       })}
-      <p className="italic">
+      <p className="italic whitespace-pre-wrap">
         {item.description || "item description / flavour text"}
       </p>
     </div>
