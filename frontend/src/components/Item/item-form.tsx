@@ -115,7 +115,7 @@ export default function ItemForm({
           id="description"
           value={item.description}
           onChange={(e) => onChange("description", e.target.value)}
-          className="custom-input"
+          className="custom-input md:max-h-18"
         />
       </div>
       <div className="sm:col-span-2">

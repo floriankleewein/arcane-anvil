@@ -63,7 +63,7 @@ function ItemFeature({ onAddFeature }: ItemFeatureProps) {
           onChange={(e) =>
             setFeature({ ...feature, description: e.target.value })
           }
-          className="custom-input"
+          className="custom-input md:max-h-18"
         ></Textarea>
       </div>
       <div className="flex flex-col justify-center">
@@ -122,7 +122,7 @@ function FeatureListItem({
           ) : (
             <>
               <p className="text-l font-semibold">{feature.name} </p>
-              <p className="break-words min-w-0">{feature.description}</p>
+              <p className="break-words min-w-0 md:max-h-12 md:overflow-y-auto">{feature.description}</p>
             </>
           )}
         </div>
